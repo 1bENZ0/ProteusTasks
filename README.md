@@ -1,6 +1,6 @@
 # Polynomial Regression Model 
 
-This is a simple Python application for fitting and visualizing a polynomial regression model using the provided data.
+This is a simple Python application for fitting and visualizing a polynomial regression model using the provided data.The application supports both a Command Line Interface (CLI) and a Graphical User Interface (GUI).The GUI renders and updates the plot in real-time.
 
 ## Getting Started
 
