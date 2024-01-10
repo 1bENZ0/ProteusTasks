@@ -57,4 +57,5 @@ python main_gui.py path/to/your/data_file.csv
 ```
 
 The graphical user interface provides a convenient way to interact with the system. It includes sliders to adjust parameters such as threshold and degree. However, there is no slider for the alpha parameter due to the high computational load associated with changing it. It also draws real time graphs and displays the amount of data, amount of data after removing outliers and mse.
+
 Note: The GUI might experience lag, but it is considered normal.
