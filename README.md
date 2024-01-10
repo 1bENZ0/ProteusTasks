@@ -1,6 +1,6 @@
 # Anomalies detector
 
-This is a simple Python application for detect anomalies in data.
+This is a simple Python application for detect anomalies in provided data.
 
 ## Getting Started
 
