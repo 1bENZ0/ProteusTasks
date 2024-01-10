@@ -16,7 +16,7 @@ Make sure you have the following installed:
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/1bENZ0/ProteusTasks/tree/master/proteus_ds_2
+    git clone https://github.com/1bENZ0/ProteusTasks
     ```
 
 2. Change into the project directory:
