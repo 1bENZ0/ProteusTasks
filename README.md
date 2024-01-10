@@ -32,7 +32,7 @@ Make sure you have the following installed:
     ```
 
 ## Usage
-# Command Line Interface
+### Command Line Interface
 Run the main script `main.py` with the path to your data file and optionally specify three parameters:
 
 ```bash
@@ -49,7 +49,7 @@ Example:
 ```bash
 python main.py data/sample_data.csv --degree 5 --threshold 1.5 --alpha 0.01
 ```
-# Graphical User Interface
+### Graphical User Interface
 Alternatively, you can run the graphical interface using the main_gui.py script:
 
 ```bash
