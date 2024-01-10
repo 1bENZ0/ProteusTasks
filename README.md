@@ -39,9 +39,9 @@ Run the main script `main.py` with the path to your data file and optionally spe
 python main.py path/to/your/data_file.csv --degree <polynomial_degree> --threshold <outlier_threshold> --alpha <regularization_parameter>
 ```
 
-Optional parameters:\n
---degree: Polynomial degree (default: 4).\n
---threshold: Threshold to remove outliers (default: 1.2).\n
+Optional parameters:<br/>
+--degree: Polynomial degree (default: 4).<br/>
+--threshold: Threshold to remove outliers (default: 1.2).<br/>
 --alpha: Regularization parameter (default: 0.1).
 
 Example:
