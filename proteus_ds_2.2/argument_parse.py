@@ -16,10 +16,10 @@ def parse_arguments():
         parser = argparse.ArgumentParser(
             description='Anomalies detector')
         parser.add_argument('data_file', help='Path to the data file')
-        parser.add_argument('--window_size', type=int, default=5,
-                            help='Window size for rolling average (default: 5)')
-        parser.add_argument('--threshold_factor', type=int, default=1,
-                            help='Multiplier for threshold (default: 1)')
+        parser.add_argument('--window_size', type=int, default=500,
+                            help='Window size for rolling average (default: 500)')
+        parser.add_argument('--threshold_factor', type=float, default=0.01,
+                            help='Multiplier for threshold (default: 0.01)')
         args = parser.parse_args()
         return args
     except argparse.ArgumentTypeError as e:
