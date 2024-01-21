@@ -40,9 +40,9 @@ python main.py path/to/your/data_file.csv --degree <polynomial_degree> --thresho
 ```
 
 Optional parameters:<br/>
-- --degree: Polynomial degree (default: 4).<br/>
-- --threshold: Threshold to remove outliers (default: 1.2).<br/>
-- --alpha: Regularization parameter (default: 0.1).
+- --degree: Polynomial degree (default: 4, type: int).<br/>
+- --threshold: Threshold to remove outliers (default: 1.2, type: float).<br/>
+- --alpha: Regularization parameter (default: 0.1, type: float).
 
 Example:
 
