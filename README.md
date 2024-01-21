@@ -32,8 +32,15 @@ Make sure you have the following installed:
     ```
 
 ## Usage
-
-Run the main script `main.py` with the path to your data file as a command-line argument:
+### Command Line Interface
+Run the main script `main.py` with the path to your data file and optionally specify two parameters:
 
 ```bash
-python main.py path/to/your/data_file.csv
+python main.py path/to/your/data_file.csv --window_size <Window size for rolling average (default: 500, type: int)> --threshold_factor <Multiplier for threshold(default: 0.01, type: float)> 
+```
+
+Example:
+
+```bash
+python main.py data/sample_data.csv --window_size 1000 --threshold 0.1 
+```
