@@ -1,5 +1,5 @@
-# Task 2
-# Simple Linear Regression Model
+# Task 0-1-2
+## Simple Linear Regression Model
 
 This is a simple Python application for fitting and visualizing a simple linear regression model using the provided data.
 
@@ -38,3 +38,7 @@ Run the main script `main.py` with the path to your data file as a command-line 
 
 ```bash
 python main.py path/to/your/data_file.csv
+```
+
+# Task 3
+Introduction to image operations
