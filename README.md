@@ -1,3 +1,4 @@
+# Task 2
 # Simple Linear Regression Model
 
 This is a simple Python application for fitting and visualizing a simple linear regression model using the provided data.
