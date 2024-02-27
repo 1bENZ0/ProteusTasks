@@ -6,6 +6,12 @@ from rotate_image import rotate_image
 
 
 def main():
+    """
+    Main function.
+    Returns
+    -------
+    None
+    """
     arg = parse_argument()
     try:
         pcb_image = cv2.imread(arg.image)
