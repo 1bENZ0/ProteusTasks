@@ -6,12 +6,6 @@ from rotate_image import rotate_image
 
 
 def main():
-    """
-    Main function.
-    Returns
-    -------
-    None
-    """
     arg = parse_argument()
     try:
         pcb_image = cv2.imread(arg.image)
@@ -22,7 +16,7 @@ def main():
     show_image(pcb_image)
     print(f"Изображение: \n{pcb_image}",
           f"\nРазрешение : {pcb_image.shape[1]} x {pcb_image.shape[0]}",
-          f"\nКоличество каналов: {len(pcb_image.shape)}")
+          f"\nКоличество каналов: {pcb_image.shape[-1] if pcb_image.ndim == 3 else 1}")
 
     # Изменение разрешения изображения
     resized_img = cv2.resize(pcb_image, (100, 100))

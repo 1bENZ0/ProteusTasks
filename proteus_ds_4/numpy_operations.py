@@ -3,14 +3,15 @@ import numpy
 from show_image import show_image
 
 
-def numpy_operations(img: numpy.ndarray, scalar: int = 15):
+def test_numpy_operations(img: numpy.ndarray, scalar: int = 15) -> None:
     """
     Математические операции с матрицей на скаляр
+
     Parameters
     ----------
     img : numpy.ndarray
         Исходное изображение.
-    scalar : int
+    scalar : int, default: 15
         Скаляр для умножения.
 
     Returns

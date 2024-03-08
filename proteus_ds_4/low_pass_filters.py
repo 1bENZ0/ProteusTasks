@@ -4,14 +4,15 @@ import numpy as np
 from show_image import show_image
 
 
-def blur(image: numpy.ndarray, kernel_size: tuple[int, int] = (100, 100)):
+def test_blur(image, kernel_size):
     """
-    Размытие изображения используя нормализованный бокс фильтр(линейный).
+    Тест размытия изображения используя нормализованный бокс фильтр(линейный).
+
     Parameters
     ----------
     image : numpy.ndarray
         Исходное изображение
-    kernel_size : tuple[int, int]
+    kernel_size : tuple[int, int], default: (100, 100)
         Размер ядра для свертки.
 
     Returns
@@ -25,23 +26,24 @@ def blur(image: numpy.ndarray, kernel_size: tuple[int, int] = (100, 100)):
     kernel = kernel / np.sum(kernel)
     # Умножения ядра на изображение
     blured_image = cv2.filter2D(image, -1, kernel)
-
     show_image(blured_image.astype(np.uint8), win_name='self-made blur',
                time=2000)
-    show_image(cv2.blur(image, kernel_size), win_name='cv2 blur')
+
+    cv2_blured_image = cv2.blur(image, kernel_size)
+    show_image(cv2_blured_image, win_name='cv2 blur')
 
 
-def gaussian_blur(image: numpy.ndarray, kernel_size: int = 101,
-                  sigma: float = 0):
+def test_gaussian_blur(image, kernel_size, sigma):
     """
-    Размытие по Гауссу, используя формулу для вычисления ядра Гаусса.
+    Тест размытия по Гауссу, используя формулу для вычисления ядра Гаусса.
+
     Parameters
     ----------
     image : numpy.ndarray
         Исходное изображение
-    kernel_size : int
+    kernel_size : int, default: 101
         Размер ядра для размытия, должен быть положительным и нечетным.
-    sigma : float
+    sigma : float, default: 0
         Стандартное отклонения.
 
     Returns
@@ -69,45 +71,51 @@ def gaussian_blur(image: numpy.ndarray, kernel_size: int = 101,
 
     show_image(gauss_blured_image, win_name='self-made gaussian blur',
                time=2000)
-    show_image(cv2.GaussianBlur(image, (kernel_size, kernel_size), 0),
+
+    cv2_gaussian_blur = cv2.GaussianBlur(image, (kernel_size, kernel_size), 0)
+    show_image(cv2_gaussian_blur,
                win_name='cv2 gaussian blur')
 
 
-def median_blur(image: numpy.ndarray, kernel_size: int = 101):
+def test_median_blur(image, kernel_size):
     """
-    Медианное размытие. Вычисляет для центра ядра медиану всех пикселей.
+    Тест медианного размытия. Вычисляет для центра ядра медиану всех пикселей.
+
     Parameters
     ----------
     image : numpy.ndarray
         Исходное изображение.
-    kernel_size: int
+    kernel_size: int, default: 101
         Размер ядра для размытия, должен быть положительным и нечетным.
 
     Returns
     -------
     None
     """
-    show_image(cv2.medianBlur(image, kernel_size), win_name='cv2 median blur')
+    median_blur_image = cv2.medianBlur(image, kernel_size)
+    show_image(median_blur_image, win_name='cv2 median blur')
 
 
-def bilateral_filter(image: numpy.ndarray, d: int = 26, sigmacolor: float = 75,
-                     sigmaspace: float = 75):
+def test_bilateral_filter(image, d, sigmacolor, sigmaspace):
     """
-    Применяет билатеральный фильтр к изображению для размытия, сохраняя рёбра.
+    Тест билатерального фильтра к изображению для размытия, сохраняя рёбра.
+
     Parameters
     ----------
     image : numpy.ndarray
         Исходное изображение.
-    d : float
+    d : float, default: 26
         Диаметр окрестности каждого пикселя, который используется при фильтрации.
-    sigmacolor
+    sigmacolor : float, default: 75
         Отклонение фильтра в цветовом пространстве.
-    sigmaspace
+    sigmaspace : float, default: 75
         Отклонение фильтра в пространстве координат
     Returns
     -------
     None
     """
-    show_image(cv2.bilateralFilter(image, d=d, sigmaColor=sigmacolor,
-                                   sigmaSpace=sigmaspace),
+    bilateral_filter_image = cv2.bilateralFilter(image, d=d,
+                                                 sigmaColor=sigmacolor,
+                                                 sigmaSpace=sigmaspace)
+    show_image(bilateral_filter_image,
                win_name='cv2 bilateral filter')

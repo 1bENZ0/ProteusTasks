@@ -1,11 +1,13 @@
 import cv2
+import numpy
 
 from show_image import show_image
 
 
-def split_color(img):
+def test_split_color(img: numpy.ndarray) -> None:
     """
     Функция разделения изображения на каналы цвета.
+
     Parameters
     ----------
     img : numpy.ndarray
@@ -24,9 +26,10 @@ def split_color(img):
                time=500)
 
 
-def merge_color(img):
+def test_merge_color(img: numpy.ndarray) -> None:
     """
     Функция объединения каналов для получения изображения
+
     Parameters
     ----------
     img : numpy.ndarray

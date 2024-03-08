@@ -1,12 +1,14 @@
+import numpy
 import numpy as np
 import cv2
 
 from show_image import show_image
 
 
-def change_space_color(img):
+def test_change_space_color(img: numpy.ndarray) -> None:
     """
     Смена цветового пространства изображения.
+
     Parameters
     ----------
     img : numpy.ndarray

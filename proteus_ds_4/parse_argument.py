@@ -1,13 +1,14 @@
 import argparse
 
 
-def parse_argument():
+def parse_argument() -> argparse.Namespace:
     """
     Функция для обработки аргумента при запуске скрипта.
 
     Returns
     -------
     argparse.Namespace
+        Аргументы полученные из строки.
     """
     try:
         parser = argparse.ArgumentParser()

@@ -2,7 +2,8 @@ import cv2
 import numpy
 
 
-def show_image(image: numpy.ndarray, window_width: int = 800, window_height: int = 600,
+def show_image(image: numpy.ndarray, window_width: int = 800,
+               window_height: int = 600,
                win_name: str = 'pcb', time: int = 0):
     """
     Функция вывода изображения.
@@ -28,6 +29,6 @@ def show_image(image: numpy.ndarray, window_width: int = 800, window_height: int
         cv2.namedWindow(win_name, cv2.WINDOW_NORMAL)
         cv2.resizeWindow(win_name, window_width, window_height)
         cv2.imshow(win_name, image)
-        cv2.waitKey(time)
+        return cv2.waitKey(time)
     except Exception as e:
         raise Exception(f"Ошибка во время отображения: {e}")

@@ -3,80 +3,82 @@ import numpy
 from show_image import show_image
 
 
-def canny(image: numpy.ndarray, t_low: float = 19, t_upp: float = 40,
-          aperture_size: int = 3, l2gradient: bool = False):
+def test_canny(image, t_low, t_upp,
+               aperture_size, l2gradient):
     """
-    Фильтр Кэнни для обределения граней на изображении.
+    Тест фильтра Кэнни для обределения граней на изображении.
+
     Parameters
     ----------
     image : numpy.ndarray
         Исходное изображение.
-    t_low : float
+    t_low : float, default: 19
         Нижний порог для процедуры гистерезиса
-    t_upp: float
+    t_upp: float, default: 40
         Верхний порог для процедуры гистерезиса.
-    aperture_size: int
+    aperture_size: int, default: 3
         Размер апертуры для оператора Собеля.
-    l2gradient : bool
+    l2gradient : bool, default: False
         Флаг для подсчета градиента. False - используется модуль, True - используется квадрат.
 
     Returns
     -------
     None
     """
-    show_image(cv2.Canny(image, t_low, t_upp, apertureSize=aperture_size,
-                         L2gradient=l2gradient), win_name='canny filter')
+    image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+    image_canny = cv2.Canny(image, t_low, t_upp, apertureSize=aperture_size,
+                            L2gradient=l2gradient)
+    show_image(image_canny, win_name='canny filter')
 
 
-def laplacian(image: numpy.ndarray, ddepth: int = cv2.CV_64F, ksize: int = 3,
-              scale: float = 1, delta: float = 0,
-              bordertype: int = cv2.BORDER_DEFAULT):
+def test_laplacian(image, ddepth, ksize, scale, delta, bordertype):
     """
-    Фильтр Лапласа для выделения краев.
+    Тест фильтра Лапласа для выделения краев.
+
     Parameters
     ----------
     image : numpy.ndarray
         Исходное изображение.
-    ddepth : int
+    ddepth : int, default: cv2.CV_64F
         Желаемая глубина конечного изображения.
-    ksize : int
+    ksize : int, default: 3
         Размер ядра, используемый для расчета фильтров со второй производной.
-    scale : float
+    scale : float, default: 1
         Масштабный коэффициент для вычисленных значений Лапласиана.
-    delta : float
+    delta : float, default: 0
         Смещение, которое добавляется к результатам перед выводом
-    bordertype : int
+    bordertype : int, default: cv2.BORDER_DEFAULT
         Метод экстраполяции пикселей.
 
     Returns
     -------
     None
     """
-    show_image(numpy.uint8(numpy.abs(cv2.Laplacian(image, ddepth, ksize=ksize,
-                                                   scale=scale,
-                                                   delta=delta,
-                                                   borderType=bordertype))),
-               win_name='laplacian filter')
+    image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+    laplacian_image = cv2.Laplacian(image, ddepth, ksize=ksize,
+                                    scale=scale,
+                                    delta=delta,
+                                    borderType=bordertype)
+    show_image(laplacian_image, win_name='laplacian filter')
 
 
-def sobel(image: numpy.ndarray, ddepth: int = cv2.CV_64F, ksize: int = 3,
-          scale: float = 1, delta: float = 0,
-          bordertype: int = cv2.BORDER_DEFAULT):
+def test_sobel(image, ddepth, ksize, scale, delta, bordertype):
     """
-    Фильтр Собеля для выделения градиентов яркости.
+    Тест фильтра Собеля для выделения градиентов яркости.
+
     Parameters
     ----------
     image : numpy.ndarray
         Исходное изображение.
-    ddepth : int
+    ddepth : int, default: cv2.CV_64F
         Желаемая глубина конечного изображения.
-    ksize : int
+    ksize : int, default: 3
         Размер ядра, используемый для расчета фильтров со второй производной.
-    scale : float
+    scale : float, default: 1
         Масштабный коэффициент для вычисленных значений Лапласиана.
-    delta : float
+    delta : float, default: 0
         Смещение, которое добавляется к результатам перед выводом
-    bordertype : int
+    bordertype : int, default: cv2.BORDER_DEFAULT
         Метод экстраполяции пикселей.
 
 
@@ -84,38 +86,41 @@ def sobel(image: numpy.ndarray, ddepth: int = cv2.CV_64F, ksize: int = 3,
     -------
     None
     """
-    show_image(cv2.Sobel(src=image, ddepth=ddepth, dx=1, dy=0,
-                         ksize=ksize, scale=scale, delta=delta,
-                         borderType=bordertype),
+    image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+    sobel_y_image = cv2.Sobel(src=image, ddepth=ddepth, dx=1, dy=0,
+                              ksize=ksize, scale=scale, delta=delta,
+                              borderType=bordertype)
+    show_image(sobel_y_image,
                win_name='sobel x')
-    show_image(cv2.Sobel(src=image, ddepth=ddepth, dx=0, dy=1,
-                         ksize=ksize, scale=scale, delta=delta,
-                         borderType=bordertype),
+
+    sobel_x_image = cv2.Sobel(src=image, ddepth=ddepth, dx=0, dy=1,
+                              ksize=ksize, scale=scale, delta=delta,
+                              borderType=bordertype)
+    show_image(sobel_x_image,
                win_name='sobel y')
-    show_image(cv2.Sobel(src=image, ddepth=ddepth, dx=1, dy=1,
-                         ksize=ksize, scale=scale, delta=delta,
-                         borderType=bordertype),
+
+    sobel_xy_image = cv2.Sobel(src=image, ddepth=ddepth, dx=1, dy=1,
+                               ksize=ksize, scale=scale, delta=delta,
+                               borderType=bordertype)
+    show_image(sobel_xy_image,
                win_name='sobel xy')
 
 
-def scharr(image: numpy.ndarray, ddepth: int = cv2.CV_64F, ksize: int = 3,
-           scale: float = 1, delta: float = 0,
-           bordertype: int = cv2.BORDER_DEFAULT):
+def test_scharr(image, ddepth, scale, delta, bordertype):
     """
-    Фильтр Шарра для выделения градиентов яркости.
+    Тест фильтра Шарра для выделения градиентов яркости.
+
     Parameters
     ----------
     image : numpy.ndarray
         Исходное изображение.
-    ddepth : int
+    ddepth : int, default: cv2.CV_64F
         Желаемая глубина конечного изображения.
-    ksize : int
-        Размер ядра, используемый для расчета фильтров со второй производной.
-    scale : float
+    scale : float, default: 1
         Масштабный коэффициент для вычисленных значений Лапласиана.
-    delta : float
+    delta : float, default: 0
         Смещение, которое добавляется к результатам перед выводом
-    bordertype : int
+    bordertype : int, default: cv2.BORDER_DEFAULT
         Метод экстраполяции пикселей.
 
 
@@ -123,9 +128,15 @@ def scharr(image: numpy.ndarray, ddepth: int = cv2.CV_64F, ksize: int = 3,
     -------
     None
     """
-    show_image(cv2.Scharr(src=image, ddepth=ddepth, dx=1, dy=0, scale=scale,
-                          delta=delta,
-                          borderType=bordertype), win_name='sharr x')
-    show_image(cv2.Scharr(src=image, ddepth=ddepth, dx=0, dy=1, scale=scale,
-                          delta=delta,
-                          borderType=bordertype), win_name='sharr y')
+    image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+    sharr_x_image = cv2.Scharr(src=image, ddepth=ddepth, dx=1, dy=0,
+                               scale=scale,
+                               delta=delta,
+                               borderType=bordertype)
+    show_image(sharr_x_image, win_name='sharr x')
+
+    sharr_y_image = cv2.Scharr(src=image, ddepth=ddepth, dx=0, dy=1,
+                               scale=scale,
+                               delta=delta,
+                               borderType=bordertype)
+    show_image(sharr_y_image, win_name='sharr y')

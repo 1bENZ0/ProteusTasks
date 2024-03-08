@@ -4,14 +4,15 @@ import numpy
 from show_image import show_image
 
 
-def gold_backing_definition(image, ksize=1):
+def gold_backing_definition(image: numpy.ndarray, ksize=1) -> None:
     """
     Функция для выделения золотой подложки на фото.
+
     Parameters
     ----------
     image : numpy.ndarray
         Исходное изображение.
-    ksize:
+    ksize: int, default: 1
         Размер ядра для оператора Собеля.
 
     Returns
@@ -21,18 +22,19 @@ def gold_backing_definition(image, ksize=1):
 
     def increase_contrast_with_mask(image: numpy.ndarray, mask: numpy.ndarray,
                                     alpha: float = 1.5,
-                                    beta: float = 0):
+                                    beta: float = 0) -> numpy.ndarray:
         """
         Функция увеличения контраста.
+
         Parameters
         ----------
         image : numpy.ndarray
             Исходное изображение.
         mask : numpy.ndarray
             Маска по которой происходит увеличение контраста.
-        alpha : float
+        alpha : float, default: 1.5
             Масштабный коэффициент.
-        beta : float
+        beta : float, default: 0
             Смещение.
 
         Returns
@@ -47,6 +49,7 @@ def gold_backing_definition(image, ksize=1):
 
     # Преобразование входного изображения из цветового пространства BGR в YUV
     image = cv2.cvtColor(image, cv2.COLOR_BGR2YUV)
+
     # Вычисление градиента по осям x и y, используя оператор Собеля
     gradient_x_image = cv2.Sobel(image, ddepth=cv2.CV_32F, dx=1, dy=0,
                                  ksize=ksize)
