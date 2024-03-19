@@ -40,6 +40,8 @@ Run the main script `main.py` with the path to your data file as a command-line 
 python main.py path/to/your/data_file.csv
 ```
 
+### Tasks 2.1 and 2.2 are in the task_2.1 and task_2.2 branches
+
 # Task 3
 ## Introduction to image operations
 Simple operations in opencv
