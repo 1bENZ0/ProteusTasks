@@ -79,7 +79,7 @@ Run the main script `main.py` with the path to your data file:
 ```bash
 python main.py path/to/your/data_file.csv 
 ```
-<<<<<<< task_4
+
 # Task 4
 ## Basic image processing
 Basic opencv image processing
@@ -119,8 +119,6 @@ Run the main script `main.py` with the path to your data file:
 ```bash
 python main.py path/to/your/data_file.csv 
 ```
-=======
->>>>>>> master
 
 # Task 5
 ## Simple localization of objects in an image
