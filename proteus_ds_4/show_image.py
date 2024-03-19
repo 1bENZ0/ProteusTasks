@@ -4,7 +4,7 @@ import numpy
 
 def show_image(image: numpy.ndarray, window_width: int = 800,
                window_height: int = 600,
-               win_name: str = 'pcb', time: int = 0):
+               win_name: str = 'pcb', time: int = 0) -> int:
     """
     Функция вывода изображения.
 
@@ -12,18 +12,19 @@ def show_image(image: numpy.ndarray, window_width: int = 800,
     ----------
     image : numpy.ndarray
         Исходное изображение.
-    window_width : int
+    window_width : int, default: 800
         Ширина окна с изображением.
-    window_height : int
+    window_height : int, default: 600
         Высота окна с изображением.
-    win_name : str
+    win_name : str, default: 'pcb'
         Название окна.
-    time : int
+    time : int, default: 0
         Время до закрытия окна в миллисекундах. При 0 ожидает нажатие любой клавиши.
 
     Returns
     -------
-    None
+    int
+        Код нажатой клавиши.
     """
     try:
         cv2.namedWindow(win_name, cv2.WINDOW_NORMAL)
