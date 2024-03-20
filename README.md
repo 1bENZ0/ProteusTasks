@@ -50,5 +50,11 @@ Make sure you have the following installed:
 Run the main script `main.py` with the path to your data file as a command-line argument:
 
 ```bash
-python main.py path/to/your/data_file.csv
+python main.py "path/to/your/data_file.csv"
+```
+
+For image processing:
+
+```bash
+python main.py "path/to/your/image.png"
 ```
